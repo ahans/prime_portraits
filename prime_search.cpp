@@ -11,6 +11,7 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <chrono>
 
 namespace py = pybind11;
 
@@ -79,8 +80,8 @@ struct PrimePortraitFinder
 
     void find_prime_portrait(const py::array_t<float>& image, const py::array_t<float>& centers)
     {
-        std::random_device rd;
-        std::default_random_engine generator(rd());
+        auto const seed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+        std::default_random_engine generator(seed);
 
         size_t trials{};
 
