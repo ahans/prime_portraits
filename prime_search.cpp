@@ -80,8 +80,10 @@ struct PrimePortraitFinder
 
     void find_prime_portrait(const py::array_t<float>& image, const py::array_t<float>& centers)
     {
-        auto const seed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+        auto const seed = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
         std::default_random_engine generator(seed);
+
+        std::cout << "thread #" << i << " uses seed " << seed << std::endl;
 
         size_t trials{};
 

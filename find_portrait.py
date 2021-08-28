@@ -16,7 +16,7 @@ data = list(img.getdata())
 data = np.array(data).astype(float) / 255.
 centers, indices = kmeans_plusplus(data, n_clusters=10, random_state=0)
 
-img = img.resize((img.width // 25, img.height // 25))
+img = img.resize((img.width // 2, img.height // 2))
 data = list(img.getdata())
 data = np.array(data).astype(float) / 255.
 
@@ -25,7 +25,7 @@ print(f"working on image with resolution {img.width}x{img.height}")
 data = data.reshape((img.height, img.width, 3))
 
 start = time.time()
-digits = find_prime_portrait(2, data, centers)
+digits = find_prime_portrait(4, data, centers)
 end = time.time()
 print(f"took {end-start} s [{len(digits[0])} digits]")
 

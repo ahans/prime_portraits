@@ -35,9 +35,9 @@ new_local_repository(
 """
 cc_library(
     name = "lib",
-    hdrs = glob(["include/python*/**/*.h"]),
-    srcs = glob(["lib/x86_64-linux-gnu/libpython*so"]),
-    includes = ["include/python3.8"],
+    hdrs = glob(["include/python3.6/**/*.h"]),
+    srcs = glob(["lib/x86_64-linux-gnu/libpython*3.6*so"]),
+    includes = ["include/python3.6"],
 
     visibility = ["//visibility:public"],
 )
